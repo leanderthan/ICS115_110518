@@ -64,4 +64,26 @@ public class MainActivity extends AppCompatActivity {
         lname.setText(table.getString(2));
         score.setText(table.getString(3));
     }
+
+    public void editRecord(View v){
+        String id = table.getString(0);
+        String f = fname.getText().toString();
+        String l = lname.getText().toString();
+        int s = Integer.parseInt(score.getText().toString());
+
+        boolean updated = helper.update(id,f,l,s);
+        if (updated == true){
+            Toast.makeText(this, "Record updated", Toast.LENGTH_LONG).show();
+        } else
+            Toast.makeText(this, "Record not updated", Toast.LENGTH_LONG).show();
+    }
+
+    public void deleteRecord(View v){
+        String id = table.getString(0);
+        boolean deleted = helper.delete(id);
+        if (deleted == true){
+            Toast.makeText(this, "Record deleted", Toast.LENGTH_LONG).show();
+        } else
+            Toast.makeText(this, "Record deleted", Toast.LENGTH_LONG).show();
+    }
 }
